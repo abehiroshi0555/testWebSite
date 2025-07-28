@@ -162,3 +162,12 @@ footer {
     padding: 0.68em 0.9em 0.95em 0.9em;
   }
 }
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding-left: 2vw !important;
+    padding-right: 2vw !important;
+  }
+}
