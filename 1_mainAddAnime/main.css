@@ -1,0 +1,190 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f9fbfc;
+  font-family: sans-serif;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;       /* ←ここがポイント。中央寄せ！ */
+  min-height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+/* サイド縦書きテキスト（左右共通） */
+.side-text {
+  writing-mode: vertical-rl;
+  font-size: 5vw;         /* お好みで大きさ調整。例: 4vw, 60px など */
+  font-weight: bold;
+  color: #222;
+  white-space: nowrap;
+  margin: 0;              /* マージン無しでぴったり寄る */
+  padding: 0;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  animation: floatIn 2.5s cubic-bezier(.32,1.35,.51,.93) forwards;
+}
+.side-text.left {
+  animation-delay: 0.3s;
+}
+.side-text.right {
+  animation-delay: 0.7s;
+}
+
+/* アニメーション：下から浮かび上がる */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タイル部分：横幅を明示的に小さくすることでサイドが寄る */
+.content {
+  width: 420px;           /* ←ここを小さくするとさらに寄ります！ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* タイルグリッド */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  grid-template-rows: repeat(2, 120px);
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* タイルデザイン */
+.tile {
+  background: #cce3f6;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px #aaa2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: #222;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.2s;
+  width: 100px;
+  height: 100px;
+  min-width: 70px;
+}
+.tile:hover {
+  box-shadow: 0 6px 20px #0379b744;
+  transform: scale(1.07);
+}
+
+/* モーダル（タイル詳細）の基本。必要に応じて追加 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(20, 44, 80, 0.40);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s;
+}
+.modal.active {
+  display: flex;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.modal-content {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 12px 44px #0379b755;
+  padding: 60px 80px 44px 80px;
+  min-width: 900px;
+  min-height: 600px;
+  max-width: 96vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: popIn 0.2s;
+}
+@keyframes popIn {
+  from { transform: scale(0.85);}
+  to { transform: scale(1);}
+}
+.modal-title {
+  font-size: 4em;
+  font-weight: bold;
+  color: #0379b7;
+  margin-bottom: 10px;
+}
+.modal-detail {
+  font-size: 2em;
+  color: #234;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.4em;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.close-btn:hover {
+  color: #0379b7;
+}
+
+/* スマホ・タブレット対応 */
+@media (max-width: 700px) {
+  .main-layout {
+    flex-direction: column;
+    min-height: unset;
+    height: auto;
+    width: 100vw;
+  }
+  .side-text {
+    writing-mode: horizontal-tb;
+    font-size: 2em;
+    margin: 10px 0;
+    text-align: center;
+    display: block;
+    position: static;
+    pointer-events: none;
+    padding: 0;
+  }
+  .content {
+    width: 98vw;
+    padding: 0;
+  }
+  .grid-container {
+    gap: 10px;
+    grid-template-columns: repeat(2, 38vw);
+    grid-template-rows: repeat(3, 18vw);
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>6タイル詳細拡大サンプル（flexbox）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <div class="main-layout">
+    <div class="side-text left"><span>テスト空間へ</span></div>
+    <div class="content">
+      <div class="grid-container">
+        <div class="tile" onclick="openModal('A')">A</div>
+        <div class="tile" onclick="openModal('B')">B</div>
+        <div class="tile" onclick="openModal('C')">C</div>
+        <div class="tile" onclick="openModal('D')">D</div>
+        <div class="tile" onclick="openModal('E')">E</div>
+        <div class="tile" onclick="openModal('F')">F</div>
+      </div>
+    </div>
+    <div class="side-text right"><span>ようこそ</span></div>
+  </div>
+  <div id="modal" class="modal" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation();">
+      <button class="close-btn" onclick="closeModal(event)">&times;</button>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-detail" id="modalDetail"></div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>
