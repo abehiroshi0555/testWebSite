@@ -240,6 +240,55 @@ body {
 }
 
 @media (max-width: 700px) {
+  .main-layout {
+    flex-direction: column;
+    min-height: unset;
+    height: auto;
+    width: 100vw;
+  }
+  .side-text {
+    writing-mode: horizontal-tb;
+    font-size: 1.7em;
+    margin: 10px 0;
+    text-align: center;
+    display: block;
+    position: static;
+    pointer-events: none;
+    padding: 0;
+    opacity: 1;
+    animation: none;
+  }
+  .side-text.right {
+    order: -1;  /* スマホでは「ようこそ」を上に */
+  }
+  .side-text.left {
+    order: 0;   /* 「テスト空間へ」を下に */
+  }
+  .content {
+    width: 98vw;
+    padding: 0;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 14px;
+    justify-items: center;
+    align-items: center;
+    width: 96vw;
+    margin: 0 auto;
+  }
+  .tile {
+    width: 24vw;
+    height: 24vw;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 90px;
+    max-height: 90px;
+    font-size: 1.5em;
+  }
+
+  /* モーダル（詳細表示）のスマホ対応 */
   .modal-content {
     min-width: 0;
     width: 96vw;
@@ -256,4 +305,5 @@ body {
     padding: 8px 16px;
   }
 }
+
 
