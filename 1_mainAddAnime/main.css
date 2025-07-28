@@ -38,10 +38,10 @@ body {
   animation: floatIn 2.5s cubic-bezier(.32,1.35,.51,.93) forwards;
 }
 .side-text.left {
-  animation-delay: 0.3s;
+  animation-delay: 0.7s;
 }
 .side-text.right {
-  animation-delay: 0.7s;
+  animation-delay: 0.3s;
 }
 
 /* アニメーション：下から浮かび上がる */
