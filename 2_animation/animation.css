@@ -162,17 +162,3 @@ footer {
     padding: 0.68em 0.9em 0.95em 0.9em;
   }
 }
-
-@media (max-width: 600px) {
-  #modal-video {
-    aspect-ratio: 9 / 16;
-    width: 94vw;
-    max-width: 99vw;
-    height: auto;
-    min-height: 60vw;
-  }
-  .modal-content {
-    border-radius: 8px;
-    padding: 0;
-  }
-}
